@@ -35,6 +35,24 @@
   <main>
     <menu-recommender></menu-recommender>
     
+    <section class="comment-section">
+      <h3>💬 메뉴에 대해 이야기해봐요!</h3>
+      <div id="disqus_thread"></div>
+      <script>
+          var disqus_config = function () {
+              this.page.url = window.location.href;
+              this.page.identifier = window.location.pathname;
+          };
+          (function() {
+              var d = document, s = d.createElement('script');
+              s.src = 'https://product-builder-1.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+
     <section class="contact-section">
       <h3>🤝 제휴 및 협업 문의</h3>
       <p>비즈니스 제휴 제안이나 문의사항을 남겨주세요.</p>

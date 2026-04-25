@@ -84,8 +84,8 @@ main {
   gap: 40px;
 }
 
-/* Contact Section Styles */
-.contact-section {
+/* Section Common Styles */
+.comment-section, .contact-section {
   background: var(--card-bg);
   border-radius: 30px;
   padding: 2.5rem;
@@ -93,20 +93,22 @@ main {
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
+}
+
+.comment-section h3, .contact-section h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--title-color);
   text-align: center;
 }
 
-.contact-section h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  color: var(--title-color);
-}
-
+/* Contact Section Specific */
 .contact-section p {
   color: var(--subtitle-color);
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .contact-form {
@@ -155,4 +157,9 @@ main {
 .submit-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
+}
+
+/* Disqus Customization */
+#disqus_thread {
+  width: 100%;
 }
