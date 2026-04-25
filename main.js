@@ -14,13 +14,13 @@ class MenuRecommender extends HTMLElement {
         menus: [
           { name: '치킨', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80' },
           { name: '피자', emoji: '🍕', color: '#ff7675', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80' },
-          { name: '삼겹살', emoji: '🥓', color: '#e84393', image: 'https://images.unsplash.com/photo-1533219057257-4bb9ed5d2cc6?auto=format&fit=crop&w=800&q=80' },
+          { name: '삼겹살', emoji: '🥓', color: '#e84393', image: 'https://images.unsplash.com/photo-1606416132922-22ab37c1231e?auto=format&fit=crop&w=800&q=80' },
           { name: '초밥', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80' },
           { name: '파스타', emoji: '🍝', color: '#fab1a0', image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80' },
           { name: '국밥', emoji: '🍲', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80' },
-          { name: '돈까스', emoji: '🍱', color: '#00b894', image: 'https://images.unsplash.com/photo-1591814468924-cafb5d1232e1?auto=format&fit=crop&w=800&q=80' },
+          { name: '돈까스', emoji: '🍱', color: '#00b894', image: 'https://images.unsplash.com/photo-1623595110708-76b2f869e0b1?auto=format&fit=crop&w=800&q=80' },
           { name: '햄버거', emoji: '🍔', color: '#e17055', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80' },
-          { name: '샐러드', emoji: '🥗', color: '#66BB6A', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80' }
+          { name: '짜장면', emoji: '🍜', color: '#2d3436', image: 'https://images.unsplash.com/photo-1618449840665-9ed506d73a34?auto=format&fit=crop&w=800&q=80' }
         ]
       },
       en: {
@@ -36,7 +36,7 @@ class MenuRecommender extends HTMLElement {
           { name: 'BBQ Ribs', emoji: '🍖', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80' },
           { name: 'Burger', emoji: '🍔', color: '#e17055', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80' },
           { name: 'Tacos', emoji: '🌮', color: '#d63031', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Salad', emoji: '🥗', color: '#66BB6A', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80' }
+          { name: 'Noodles', emoji: '🍜', color: '#2d3436', image: 'https://images.unsplash.com/photo-1618449840665-9ed506d73a34?auto=format&fit=crop&w=800&q=80' }
         ]
       }
     };
