@@ -8,8 +8,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href='/style.css' rel='stylesheet'>
+  <script>
+    // Initial theme check to prevent flickering
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.classList.add('dark-mode');
+        });
+      }
+    })();
+  </script>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <span class="icon">🌓</span>
+    <span class="text">테마 변경</span>
+  </button>
   <main>
     <lotto-generator></lotto-generator>
   </main>

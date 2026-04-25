@@ -31,29 +31,32 @@ class LottoGenerator extends HTMLElement {
           display: block;
         }
         .generator-container {
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--card-bg, rgba(255, 255, 255, 0.1));
           border-radius: 20px;
           padding: 2.5rem 3rem;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          border: 1px solid var(--card-border, rgba(255, 255, 255, 0.2));
+          box-shadow: var(--card-shadow, 0 8px 32px 0 rgba(0, 0, 0, 0.37));
           text-align: center;
+          transition: all 0.3s ease;
         }
         h2 {
           font-size: 2.8rem;
           font-weight: 700;
-          color: var(--white, #fff);
-          text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          color: var(--title-color, #fff);
+          text-shadow: 0 4px 15px rgba(0,0,0,0.1);
           margin-top: 0;
           margin-bottom: 0.5rem;
+          transition: color 0.3s ease;
         }
         .subtitle {
             margin: 0 0 2.5rem 0;
             font-size: 1.1rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.85);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--subtitle-color, rgba(255, 255, 255, 0.85));
+            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: color 0.3s ease;
         }
         .numbers-display {
           display: flex;
@@ -83,8 +86,8 @@ class LottoGenerator extends HTMLElement {
           font-size: 1.75rem;
           font-weight: 600;
           color: #fff;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 -3px 5px rgba(0,0,0,0.2);
-          text-shadow: 0 2px 3px rgba(0,0,0,0.4);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 -3px 5px rgba(0,0,0,0.2);
+          text-shadow: 0 2px 3px rgba(0,0,0,0.3);
           animation: pop-in 0.5s ease-out forwards;
         }
         button {
@@ -130,3 +133,21 @@ class LottoGenerator extends HTMLElement {
 }
 
 customElements.define('lotto-generator', LottoGenerator);
+
+// Theme Toggle Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    // Also toggle class on documentElement for script in head
+    if (isDark) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  });
+});
