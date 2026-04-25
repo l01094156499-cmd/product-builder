@@ -12,18 +12,18 @@ class MenuRecommender extends HTMLElement {
         subtitle: '오늘 저녁 메뉴를 추천해드려요!',
         button: '다른 메뉴 추천받기',
         menus: [
-          { name: '치킨', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80' },
+          { name: '치킨', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80' },
           { name: '피자', emoji: '🍕', color: '#ff7675', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80' },
           { name: '삼겹살', emoji: '🥓', color: '#e84393', image: 'https://images.unsplash.com/photo-1533219057257-4bb9ed5d2cc6?auto=format&fit=crop&w=800&q=80' },
-          { name: '초밥', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80' },
+          { name: '초밥', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80' },
           { name: '파스타', emoji: '🍝', color: '#fab1a0', image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80' },
-          { name: '국밥', emoji: '🍲', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80' },
-          { name: '떡볶이', emoji: '🍢', color: '#d63031', image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=800&q=80' },
-          { name: '마라탕', emoji: '🍜', color: '#fdcb6e', image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=800&q=80' },
+          { name: '국밥', emoji: '🍲', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80' },
+          { name: '떡볶이', emoji: '🍢', color: '#d63031', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80' },
+          { name: '마라탕', emoji: '🍜', color: '#fdcb6e', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80' },
           { name: '돈까스', emoji: '🍱', color: '#00b894', image: 'https://images.unsplash.com/photo-1591814468924-cafb5d1232e1?auto=format&fit=crop&w=800&q=80' },
           { name: '햄버거', emoji: '🍔', color: '#e17055', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80' },
-          { name: '냉면', emoji: '🥣', color: '#74b9ff', image: 'https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?auto=format&fit=crop&w=800&q=80' },
-          { name: '짜장면', emoji: '🍜', color: '#2d3436', image: 'https://images.unsplash.com/photo-1623595110708-76b2f869e0b1?auto=format&fit=crop&w=800&q=80' }
+          { name: '냉면', emoji: '🥣', color: '#74b9ff', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80' },
+          { name: '짜장면', emoji: '🍜', color: '#2d3436', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80' }
         ]
       },
       en: {
@@ -31,10 +31,10 @@ class MenuRecommender extends HTMLElement {
         subtitle: "Let me recommend a menu for you!",
         button: 'Give me another one',
         menus: [
-          { name: 'Fried Chicken', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Fried Chicken', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80' },
           { name: 'Pizza', emoji: '🍕', color: '#ff7675', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80' },
           { name: 'Steak', emoji: '🥩', color: '#e84393', image: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&w=800&q=80' },
-          { name: 'Sushi', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Sushi', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80' },
           { name: 'Pasta', emoji: '🍝', color: '#fab1a0', image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80' },
           { name: 'BBQ Ribs', emoji: '🍖', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80' },
           { name: 'Tacos', emoji: '🌮', color: '#d63031', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80' },
@@ -107,7 +107,7 @@ class MenuRecommender extends HTMLElement {
           overflow: hidden;
           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
           position: relative;
-          background: #eee;
+          background: rgba(0,0,0,0.05);
         }
         .menu-image {
           width: 100%;
