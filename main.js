@@ -4,7 +4,6 @@ class MenuRecommender extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     
-    // 언어 설정 확인 (html 태그의 lang 속성 기준)
     this.lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
     
     this.data = {
@@ -13,18 +12,18 @@ class MenuRecommender extends HTMLElement {
         subtitle: '오늘 저녁 메뉴를 추천해드려요!',
         button: '다른 메뉴 추천받기',
         menus: [
-          { name: '치킨', emoji: '🍗', color: '#f9d423' },
-          { name: '피자', emoji: '🍕', color: '#ff7675' },
-          { name: '삼겹살', emoji: '🥓', color: '#e84393' },
-          { name: '초밥', emoji: '🍣', color: '#00a8ff' },
-          { name: '파스타', emoji: '🍝', color: '#fab1a0' },
-          { name: '국밥', emoji: '🍲', color: '#a29bfe' },
-          { name: '떡볶이', emoji: '🍢', color: '#d63031' },
-          { name: '마라탕', emoji: '🍜', color: '#fdcb6e' },
-          { name: '돈까스', emoji: '🍱', color: '#00b894' },
-          { name: '햄버거', emoji: '🍔', color: '#e17055' },
-          { name: '냉면', emoji: '🥣', color: '#74b9ff' },
-          { name: '짜장면', emoji: '🍜', color: '#2d3436' }
+          { name: '치킨', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80' },
+          { name: '피자', emoji: '🍕', color: '#ff7675', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80' },
+          { name: '삼겹살', emoji: '🥓', color: '#e84393', image: 'https://images.unsplash.com/photo-1533219057257-4bb9ed5d2cc6?auto=format&fit=crop&w=800&q=80' },
+          { name: '초밥', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80' },
+          { name: '파스타', emoji: '🍝', color: '#fab1a0', image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80' },
+          { name: '국밥', emoji: '🍲', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80' },
+          { name: '떡볶이', emoji: '🍢', color: '#d63031', image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=800&q=80' },
+          { name: '마라탕', emoji: '🍜', color: '#fdcb6e', image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=800&q=80' },
+          { name: '돈까스', emoji: '🍱', color: '#00b894', image: 'https://images.unsplash.com/photo-1591814468924-cafb5d1232e1?auto=format&fit=crop&w=800&q=80' },
+          { name: '햄버거', emoji: '🍔', color: '#e17055', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80' },
+          { name: '냉면', emoji: '🥣', color: '#74b9ff', image: 'https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?auto=format&fit=crop&w=800&q=80' },
+          { name: '짜장면', emoji: '🍜', color: '#2d3436', image: 'https://images.unsplash.com/photo-1623595110708-76b2f869e0b1?auto=format&fit=crop&w=800&q=80' }
         ]
       },
       en: {
@@ -32,18 +31,18 @@ class MenuRecommender extends HTMLElement {
         subtitle: "Let me recommend a menu for you!",
         button: 'Give me another one',
         menus: [
-          { name: 'Fried Chicken', emoji: '🍗', color: '#f9d423' },
-          { name: 'Pizza', emoji: '🍕', color: '#ff7675' },
-          { name: 'BBQ Pork', emoji: '🥓', color: '#e84393' },
-          { name: 'Sushi', emoji: '🍣', color: '#00a8ff' },
-          { name: 'Pasta', emoji: '🍝', color: '#fab1a0' },
-          { name: 'Steak', emoji: '🥩', color: '#a29bfe' },
-          { name: 'Tacos', emoji: '🌮', color: '#d63031' },
-          { name: 'Ramen', emoji: '🍜', color: '#fdcb6e' },
-          { name: 'Burger', emoji: '🍔', color: '#e17055' },
-          { name: 'Salad', emoji: '🥗', color: '#00b894' },
-          { name: 'Sandwich', emoji: '🥪', color: '#74b9ff' },
-          { name: 'Dim Sum', emoji: '🥟', color: '#2d3436' }
+          { name: 'Fried Chicken', emoji: '🍗', color: '#f9d423', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Pizza', emoji: '🍕', color: '#ff7675', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Steak', emoji: '🥩', color: '#e84393', image: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Sushi', emoji: '🍣', color: '#00a8ff', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Pasta', emoji: '🍝', color: '#fab1a0', image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80' },
+          { name: 'BBQ Ribs', emoji: '🍖', color: '#a29bfe', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Tacos', emoji: '🌮', color: '#d63031', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Ramen', emoji: '🍜', color: '#fdcb6e', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Burger', emoji: '🍔', color: '#e17055', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Salad', emoji: '🥗', color: '#00b894', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Sandwich', emoji: '🥪', color: '#74b9ff', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80' },
+          { name: 'Dim Sum', emoji: '🥟', color: '#2d3436', image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80' }
         ]
       }
     };
@@ -67,69 +66,84 @@ class MenuRecommender extends HTMLElement {
         }
         .generator-container {
           background: var(--card-bg, rgba(255, 255, 255, 0.1));
-          border-radius: 20px;
+          border-radius: 24px;
           padding: 2.5rem 3rem;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
           border: 1px solid var(--card-border, rgba(255, 255, 255, 0.2));
           box-shadow: var(--card-shadow, 0 8px 32px 0 rgba(0, 0, 0, 0.37));
           text-align: center;
           transition: all 0.3s ease;
-          min-width: 320px;
+          width: 100%;
+          max-width: 450px;
+          margin: 0 auto;
         }
         h2 {
-          font-size: 2.2rem;
+          font-size: 2rem;
           font-weight: 700;
           color: var(--title-color, #fff);
-          text-shadow: 0 4px 15px rgba(0,0,0,0.1);
           margin-top: 0;
           margin-bottom: 0.5rem;
-          transition: color 0.3s ease;
           font-family: 'Noto Sans KR', 'Poppins', sans-serif;
         }
         .subtitle {
-            margin: 0 0 2.5rem 0;
-            font-size: 1.1rem;
+            margin: 0 0 2rem 0;
+            font-size: 1rem;
             font-weight: 400;
             color: var(--subtitle-color, rgba(255, 255, 255, 0.85));
-            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: color 0.3s ease;
             font-family: 'Noto Sans KR', 'Poppins', sans-serif;
         }
         .menu-display {
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
           gap: 1.5rem;
-          margin-bottom: 2.5rem;
+          margin-bottom: 2rem;
         }
-        @keyframes pop-in {
-          0% {
-            opacity: 0;
-            transform: scale(0.5) translateY(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
+        .image-container {
+          width: 100%;
+          height: 250px;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+          position: relative;
+          background: #eee;
         }
-        .menu-emoji {
-          font-size: 5rem;
-          animation: pop-in 0.5s ease-out forwards;
+        .menu-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          animation: fade-in 0.8s ease-out forwards;
+        }
+        .menu-emoji-badge {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background: white;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        @keyframes fade-in {
+          from { opacity: 0; transform: scale(1.05); }
+          to { opacity: 1; transform: scale(1); }
         }
         .menu-name {
           font-size: 2.5rem;
-          font-weight: 700;
+          font-weight: 800;
           color: ${menu.color};
           text-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          animation: pop-in 0.5s ease-out 0.1s forwards;
-          opacity: 0;
           font-family: 'Noto Sans KR', 'Poppins', sans-serif;
+          margin: 0.5rem 0;
         }
         button {
           font-family: 'Noto Sans KR', 'Poppins', sans-serif;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 600;
           color: #fff;
           background: linear-gradient(145deg, #0d6efd, #0a58ca);
@@ -139,21 +153,24 @@ class MenuRecommender extends HTMLElement {
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+          width: 100%;
         }
-        button:hover, button:focus {
+        button:hover {
           transform: translateY(-3px);
           box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6);
         }
         button:active {
           transform: translateY(-1px);
-          box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
         }
       </style>
       <div class="generator-container">
         <h2>${langText.title}</h2>
         <p class="subtitle">${langText.subtitle}</p>
         <div class="menu-display">
-          <div class="menu-emoji">${menu.emoji}</div>
+          <div class="image-container">
+            <img class="menu-image" src="${menu.image}" alt="${menu.name}">
+            <div class="menu-emoji-badge">${menu.emoji}</div>
+          </div>
           <div class="menu-name">${menu.name}</div>
         </div>
         <button id="generate-btn">${langText.button}</button>
