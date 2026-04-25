@@ -3,29 +3,63 @@ class MenuRecommender extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.menus = [
-      { name: '치킨', emoji: '🍗', color: '#f9d423' },
-      { name: '피자', emoji: '🍕', color: '#ff7675' },
-      { name: '삼겹살', emoji: '🥓', color: '#e84393' },
-      { name: '초밥', emoji: '🍣', color: '#00a8ff' },
-      { name: '파스타', emoji: '🍝', color: '#fab1a0' },
-      { name: '국밥', emoji: '🍲', color: '#a29bfe' },
-      { name: '떡볶이', emoji: '🍢', color: '#d63031' },
-      { name: '마라탕', emoji: '🍜', color: '#fdcb6e' },
-      { name: '돈까스', emoji: '🍱', color: '#00b894' },
-      { name: '햄버거', emoji: '🍔', color: '#e17055' },
-      { name: '냉면', emoji: '🥣', color: '#74b9ff' },
-      { name: '짜장면', emoji: '🍜', color: '#2d3436' }
-    ];
+    
+    // 언어 설정 확인 (html 태그의 lang 속성 기준)
+    this.lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+    
+    this.data = {
+      ko: {
+        title: '오늘 뭐 먹지?',
+        subtitle: '오늘 저녁 메뉴를 추천해드려요!',
+        button: '다른 메뉴 추천받기',
+        menus: [
+          { name: '치킨', emoji: '🍗', color: '#f9d423' },
+          { name: '피자', emoji: '🍕', color: '#ff7675' },
+          { name: '삼겹살', emoji: '🥓', color: '#e84393' },
+          { name: '초밥', emoji: '🍣', color: '#00a8ff' },
+          { name: '파스타', emoji: '🍝', color: '#fab1a0' },
+          { name: '국밥', emoji: '🍲', color: '#a29bfe' },
+          { name: '떡볶이', emoji: '🍢', color: '#d63031' },
+          { name: '마라탕', emoji: '🍜', color: '#fdcb6e' },
+          { name: '돈까스', emoji: '🍱', color: '#00b894' },
+          { name: '햄버거', emoji: '🍔', color: '#e17055' },
+          { name: '냉면', emoji: '🥣', color: '#74b9ff' },
+          { name: '짜장면', emoji: '🍜', color: '#2d3436' }
+        ]
+      },
+      en: {
+        title: "What's for Dinner?",
+        subtitle: "Let me recommend a menu for you!",
+        button: 'Give me another one',
+        menus: [
+          { name: 'Fried Chicken', emoji: '🍗', color: '#f9d423' },
+          { name: 'Pizza', emoji: '🍕', color: '#ff7675' },
+          { name: 'BBQ Pork', emoji: '🥓', color: '#e84393' },
+          { name: 'Sushi', emoji: '🍣', color: '#00a8ff' },
+          { name: 'Pasta', emoji: '🍝', color: '#fab1a0' },
+          { name: 'Steak', emoji: '🥩', color: '#a29bfe' },
+          { name: 'Tacos', emoji: '🌮', color: '#d63031' },
+          { name: 'Ramen', emoji: '🍜', color: '#fdcb6e' },
+          { name: 'Burger', emoji: '🍔', color: '#e17055' },
+          { name: 'Salad', emoji: '🥗', color: '#00b894' },
+          { name: 'Sandwich', emoji: '🥪', color: '#74b9ff' },
+          { name: 'Dim Sum', emoji: '🥟', color: '#2d3436' }
+        ]
+      }
+    };
+    
     this.render();
   }
 
   getRandomMenu() {
-    const randomIndex = Math.floor(Math.random() * this.menus.length);
-    return this.menus[randomIndex];
+    const langData = this.data[this.lang];
+    const randomIndex = Math.floor(Math.random() * langData.menus.length);
+    return langData.menus[randomIndex];
   }
 
   render(menu = this.getRandomMenu()) {
+    const langText = this.data[this.lang];
+    
     this.shadowRoot.innerHTML = `
       <style>
         :host {
@@ -51,7 +85,7 @@ class MenuRecommender extends HTMLElement {
           margin-top: 0;
           margin-bottom: 0.5rem;
           transition: color 0.3s ease;
-          font-family: 'Noto Sans KR', sans-serif;
+          font-family: 'Noto Sans KR', 'Poppins', sans-serif;
         }
         .subtitle {
             margin: 0 0 2.5rem 0;
@@ -60,7 +94,7 @@ class MenuRecommender extends HTMLElement {
             color: var(--subtitle-color, rgba(255, 255, 255, 0.85));
             text-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: color 0.3s ease;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Noto Sans KR', 'Poppins', sans-serif;
         }
         .menu-display {
           display: flex;
@@ -91,10 +125,10 @@ class MenuRecommender extends HTMLElement {
           text-shadow: 0 2px 10px rgba(0,0,0,0.1);
           animation: pop-in 0.5s ease-out 0.1s forwards;
           opacity: 0;
-          font-family: 'Noto Sans KR', sans-serif;
+          font-family: 'Noto Sans KR', 'Poppins', sans-serif;
         }
         button {
-          font-family: 'Noto Sans KR', sans-serif;
+          font-family: 'Noto Sans KR', 'Poppins', sans-serif;
           font-size: 1.2rem;
           font-weight: 600;
           color: #fff;
@@ -116,13 +150,13 @@ class MenuRecommender extends HTMLElement {
         }
       </style>
       <div class="generator-container">
-        <h2>오늘 뭐 먹지?</h2>
-        <p class="subtitle">오늘 저녁 메뉴를 추천해드려요!</p>
+        <h2>${langText.title}</h2>
+        <p class="subtitle">${langText.subtitle}</p>
         <div class="menu-display">
           <div class="menu-emoji">${menu.emoji}</div>
           <div class="menu-name">${menu.name}</div>
         </div>
-        <button id="generate-btn">다른 메뉴 추천받기</button>
+        <button id="generate-btn">${langText.button}</button>
       </div>
     `;
 
@@ -138,15 +172,17 @@ customElements.define('menu-recommender', MenuRecommender);
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    
-    if (isDark) {
-      document.documentElement.classList.add('dark-mode');
-    } else {
-      document.documentElement.classList.remove('dark-mode');
-    }
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      
+      if (isDark) {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+      }
+    });
+  }
 });
