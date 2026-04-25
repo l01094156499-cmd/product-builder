@@ -1,30 +1,31 @@
 
-class LottoGenerator extends HTMLElement {
+class MenuRecommender extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.menus = [
+      { name: '치킨', emoji: '🍗', color: '#f9d423' },
+      { name: '피자', emoji: '🍕', color: '#ff7675' },
+      { name: '삼겹살', emoji: '🥓', color: '#e84393' },
+      { name: '초밥', emoji: '🍣', color: '#00a8ff' },
+      { name: '파스타', emoji: '🍝', color: '#fab1a0' },
+      { name: '국밥', emoji: '🍲', color: '#a29bfe' },
+      { name: '떡볶이', emoji: '🍢', color: '#d63031' },
+      { name: '마라탕', emoji: '🍜', color: '#fdcb6e' },
+      { name: '돈까스', emoji: '🍱', color: '#00b894' },
+      { name: '햄버거', emoji: '🍔', color: '#e17055' },
+      { name: '냉면', emoji: '🥣', color: '#74b9ff' },
+      { name: '짜장면', emoji: '🍜', color: '#2d3436' }
+    ];
     this.render();
   }
 
-  generateNumbers() {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-      numbers.add(Math.floor(Math.random() * 45) + 1);
-    }
-    return Array.from(numbers).sort((a, b) => a - b);
+  getRandomMenu() {
+    const randomIndex = Math.floor(Math.random() * this.menus.length);
+    return this.menus[randomIndex];
   }
 
-  getColorForNumber(number) {
-    if (number <= 10) return '#f9d423'; // Yellow
-    if (number <= 20) return '#00a8ff'; // Blue
-    if (number <= 30) return '#e84393'; // Pink
-    if (number <= 40) return '#00b894'; // Green
-    return '#d63031'; // Red
-  }
-
-  render(numbers = this.generateNumbers()) {
-    const numberColors = numbers.map(num => this.getColorForNumber(num));
-
+  render(menu = this.getRandomMenu()) {
     this.shadowRoot.innerHTML = `
       <style>
         :host {
@@ -40,15 +41,17 @@ class LottoGenerator extends HTMLElement {
           box-shadow: var(--card-shadow, 0 8px 32px 0 rgba(0, 0, 0, 0.37));
           text-align: center;
           transition: all 0.3s ease;
+          min-width: 320px;
         }
         h2 {
-          font-size: 2.8rem;
+          font-size: 2.2rem;
           font-weight: 700;
           color: var(--title-color, #fff);
           text-shadow: 0 4px 15px rgba(0,0,0,0.1);
           margin-top: 0;
           margin-bottom: 0.5rem;
           transition: color 0.3s ease;
+          font-family: 'Noto Sans KR', sans-serif;
         }
         .subtitle {
             margin: 0 0 2.5rem 0;
@@ -57,41 +60,41 @@ class LottoGenerator extends HTMLElement {
             color: var(--subtitle-color, rgba(255, 255, 255, 0.85));
             text-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: color 0.3s ease;
+            font-family: 'Noto Sans KR', sans-serif;
         }
-        .numbers-display {
+        .menu-display {
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
+          gap: 1.5rem;
           margin-bottom: 2.5rem;
-          flex-wrap: wrap;
         }
         @keyframes pop-in {
           0% {
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.5) translateY(20px);
           }
           100% {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) translateY(0);
           }
         }
-        .number-ball {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 1.75rem;
-          font-weight: 600;
-          color: #fff;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 -3px 5px rgba(0,0,0,0.2);
-          text-shadow: 0 2px 3px rgba(0,0,0,0.3);
+        .menu-emoji {
+          font-size: 5rem;
           animation: pop-in 0.5s ease-out forwards;
         }
+        .menu-name {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: ${menu.color};
+          text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          animation: pop-in 0.5s ease-out 0.1s forwards;
+          opacity: 0;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
         button {
-          font-family: inherit;
+          font-family: 'Noto Sans KR', sans-serif;
           font-size: 1.2rem;
           font-weight: 600;
           color: #fff;
@@ -113,16 +116,13 @@ class LottoGenerator extends HTMLElement {
         }
       </style>
       <div class="generator-container">
-        <h2>오늘의 행운 번호</h2>
-        <p class="subtitle">대박을 기원합니다!</p>
-        <div class="numbers-display">
-          ${numbers.map((num, index) => `
-            <div class="number-ball" style="background-color: ${numberColors[index]}; animation-delay: ${index * 0.1}s;">
-              ${num}
-            </div>
-          `).join('')}
+        <h2>오늘 뭐 먹지?</h2>
+        <p class="subtitle">오늘 저녁 메뉴를 추천해드려요!</p>
+        <div class="menu-display">
+          <div class="menu-emoji">${menu.emoji}</div>
+          <div class="menu-name">${menu.name}</div>
         </div>
-        <button id="generate-btn">새 번호 받기</button>
+        <button id="generate-btn">다른 메뉴 추천받기</button>
       </div>
     `;
 
@@ -132,7 +132,7 @@ class LottoGenerator extends HTMLElement {
   }
 }
 
-customElements.define('lotto-generator', LottoGenerator);
+customElements.define('menu-recommender', MenuRecommender);
 
 // Theme Toggle Logic
 document.addEventListener('DOMContentLoaded', () => {
@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     
-    // Also toggle class on documentElement for script in head
     if (isDark) {
       document.documentElement.classList.add('dark-mode');
     } else {
