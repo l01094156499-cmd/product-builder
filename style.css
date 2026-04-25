@@ -1,1 +1,29 @@
-/* Add styles here */
+/* General Body Styles */
+:root {
+  --primary-font: 'Poppins', sans-serif;
+  --background-start: #1a2a6c;
+  --background-end: #b21f1f;
+  --background-fallback: #f4c4f3;
+}
+
+body {
+  font-family: var(--primary-font);
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--background-fallback);
+  background-image: 
+    radial-gradient(at 47% 33%, hsl(210.00, 75%, 40%) 0, transparent 59%), 
+    radial-gradient(at 82% 65%, hsl(340.00, 75%, 50%) 0, transparent 55%);
+  background-repeat: no-repeat;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide header for this specific design */
+header {
+  display: none;
+}
+
