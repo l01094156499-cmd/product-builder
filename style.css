@@ -13,6 +13,7 @@
   --subtitle-color: #636e72;
   --title-color: #2d3436;
   --input-bg: rgba(255, 255, 255, 0.9);
+  --primary-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
 }
 
 body.dark-mode {
@@ -53,7 +54,7 @@ body {
   z-index: 1000;
 }
 
-.theme-toggle, .lang-link {
+.theme-toggle {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   color: var(--text-color);
@@ -68,12 +69,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  text-decoration: none;
   backdrop-filter: blur(10px);
-}
-
-.theme-toggle:hover, .lang-link:hover {
-  transform: translateY(-2px);
 }
 
 main {
@@ -84,7 +80,151 @@ main {
   gap: 40px;
 }
 
-/* Section Common Styles */
+/* Test Container */
+.test-container {
+  background: var(--card-bg);
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--subtitle-color);
+  margin-bottom: 2.5rem;
+}
+
+/* Upload Area */
+.upload-area {
+  border: 2px dashed var(--card-border);
+  border-radius: 20px;
+  padding: 3rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.upload-area:hover {
+  border-color: #6e8efb;
+  background: rgba(110, 142, 251, 0.05);
+}
+
+.upload-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.upload-label p {
+  font-size: 1rem;
+  color: var(--subtitle-color);
+  margin: 0;
+}
+
+/* Result Styles */
+.preview-image {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.result-message {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--title-color);
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2.5rem;
+}
+
+.prediction-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.prediction-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-bg {
+  height: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+body.dark-mode .bar-bg {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 6px;
+  transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.retry-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #6e8efb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Common Sections */
 .comment-section, .contact-section {
   background: var(--card-bg);
   border-radius: 30px;
@@ -100,14 +240,6 @@ main {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: var(--title-color);
-  text-align: center;
-}
-
-/* Contact Section Specific */
-.contact-section p {
-  color: var(--subtitle-color);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
   text-align: center;
 }
 
@@ -127,39 +259,14 @@ main {
   font-family: inherit;
   font-size: 0.95rem;
   box-sizing: border-box;
-  transition: all 0.3s ease;
-}
-
-.form-group textarea {
-  height: 100px;
-  resize: none;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-color: #6e8efb;
-  box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.2);
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: var(--primary-gradient);
   color: white;
   border: none;
   padding: 14px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 8px;
-}
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
-}
-
-/* Disqus Customization */
-#disqus_thread {
-  width: 100%;
 }
