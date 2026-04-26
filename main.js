@@ -1,5 +1,5 @@
-// 다양한 동물상을 지원하는 모델 URL (강아지, 고양이, 토끼, 공룡, 곰 등)
-const URL = "https://teachablemachine.withgoogle.com/models/bjU766-O5/";
+// 사용자가 새로 만든 강아지/고양이 모델 URL
+const URL = "https://teachablemachine.withgoogle.com/models/reY-Rmx3X/";
 
 let model, maxPredictions;
 
@@ -11,7 +11,7 @@ async function init() {
     try {
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
-        console.log("Model loaded successfully");
+        console.log("User's Model loaded successfully");
     } catch (error) {
         console.error("Error loading model:", error);
     }
@@ -54,35 +54,21 @@ async function predict() {
     loading.style.display = 'none';
     resultContainer.style.display = 'block';
 
-    // Set Result Message and Emojis
+    // Set Result Message
     const topResult = prediction[0].className;
     let message = "";
     let subMessage = "";
     
-    switch(topResult) {
-        case "dog":
-            message = "귀염뽀짝 강아지상 🐶";
-            subMessage = "다정다감하고 귀여운 당신은 모든 사람에게 호감을 주는 스타일!";
-            break;
-        case "cat":
-            message = "츤데레 매력 고양이상 🐱";
-            subMessage = "신비롭고 도도한 매력을 가진 당신은 알면 알수록 빠져드는 스타일!";
-            break;
-        case "rabbit":
-            message = "상큼발랄 토끼상 🐰";
-            subMessage = "항상 밝고 긍정적인 에너지를 뿜어내는 당신은 주변을 즐겁게 만드는 스타일!";
-            break;
-        case "dinosaur":
-            message = "듬직한 공룡상 🦖";
-            subMessage = "무심한 듯 따뜻한 '겉바속촉' 매력을 가진 당신은 신뢰감을 주는 스타일!";
-            break;
-        case "bear":
-            message = "포근한 곰상 🐻";
-            subMessage = "푸근하고 편안한 인상의 당신은 보는 사람까지 마음이 놓이게 하는 스타일!";
-            break;
-        default:
-            message = `${topResult}상 입니다!`;
-            subMessage = "독특하고 개성 넘치는 매력을 가지셨네요!";
+    // 모델의 클래스 이름에 따른 결과 메시지 설정
+    if (topResult === "강아지" || topResult.toLowerCase() === "dog") {
+        message = "친근한 매력! 강아지상 🐶";
+        subMessage = "다정다감하고 귀여운 당신은 어디서나 사랑받는 스타일이군요!";
+    } else if (topResult === "고양이" || topResult.toLowerCase() === "cat") {
+        message = "시크한 매력! 고양이상 🐱";
+        subMessage = "도도하고 신비로운 분위기를 가진 당신은 알수록 빠져드는 매력쟁이!";
+    } else {
+        message = `${topResult}상 입니다!`;
+        subMessage = "당신만의 독특한 분위기가 인상적이네요!";
     }
     
     resultMessage.innerHTML = `
@@ -92,24 +78,15 @@ async function predict() {
 
     // Show All Predictions with progress bars
     labelContainerEl.innerHTML = '';
-    for (let i = 0; i < 5; i++) { // 상위 5개만 표시
-        if (!prediction[i]) break;
-        
+    for (let i = 0; i < maxPredictions; i++) {
         const className = prediction[i].className;
         const probability = (prediction[i].probability * 100).toFixed(0);
         
-        // 클래스 이름 한글화
-        const krNames = {
-            'dog': '강아지', 'cat': '고양이', 'rabbit': '토끼', 
-            'dinosaur': '공룡', 'bear': '곰', 'fox': '여우'
-        };
-        const displayLabel = krNames[className] || className;
-
         const barContainer = document.createElement('div');
         barContainer.className = 'prediction-bar-container';
         barContainer.innerHTML = `
             <div class="prediction-label">
-                <span>${displayLabel}</span>
+                <span>${className}</span>
                 <span>${probability}%</span>
             </div>
             <div class="bar-bg">
