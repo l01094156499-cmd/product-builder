@@ -33,20 +33,29 @@
   <main>
     <section class="test-container">
       <h1 class="title">인공지능 동물상 테스트</h1>
-      <h2 class="subtitle">실시간 카메라로 보는 인공지능 동물상 테스트</h2>
+      <h2 class="subtitle">얼굴로 보는 인공지능 동물상 테스트</h2>
       
-      <div id="webcam-container" class="webcam-wrapper">
-        <button type="button" class="start-btn" onclick="init()">테스트 시작하기</button>
+      <div id="upload-container" class="upload-area">
+        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+        <label for="image-upload" class="upload-label">
+          <div class="upload-icon">📸</div>
+          <p>사진을 업로드하여 테스트 시작</p>
+          <span class="upload-hint">(얼굴이 잘 나온 사진을 선택해주세요)</span>
+        </label>
       </div>
 
       <div id="loading" class="loading-spinner" style="display: none;">
         <div class="spinner"></div>
-        <p>인공지능이 분석 중입니다...</p>
+        <p>인공지능이 관상을 분석 중입니다...</p>
       </div>
 
       <div id="result-container" style="display: none;">
+        <div class="image-wrapper">
+          <img id="face-image" src="#" alt="your face" class="preview-image">
+        </div>
+        <div id="result-message" class="result-message"></div>
         <div id="label-container" class="label-container"></div>
-        <button onclick="window.location.reload()" class="retry-btn">다시 시도하기</button>
+        <button onclick="window.location.reload()" class="retry-btn">다른 사진으로 하기</button>
       </div>
     </section>
     
