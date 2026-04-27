@@ -4,22 +4,23 @@ const URL = "https://teachablemachine.withgoogle.com/models/reY-Rmx3X/";
 let model, maxPredictions;
 
 // 연예인 데이터 (이름 및 이미지 URL)
+// Wikimedia Commons 썸네일 URL을 더 안정적인 형식으로 업데이트
 const celebrityData = {
     "강아지": [
-        { name: "박보영", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Park_Bo-young_at_a_fansign_on_October_21%2C_2023.jpg/250px-Park_Bo-young_at_a_fansign_on_October_21%2C_2023.jpg" },
-        { name: "송중기", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Song_Joong-ki_at_the_Vincenzo_wrap-up_party_on_May_2021.png/250px-Song_Joong-ki_at_the_Vincenzo_wrap-up_party_on_May_2021.png" }
+        { name: "박보영", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Park_Bo-young_at_a_fansign_on_October_21%2C_2023.jpg" },
+        { name: "송중기", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Song_Joong-ki_at_an_event_for_Vincenzo_in_May_2021.jpg" }
     ],
     "고양이": [
-        { name: "제니", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Jennie_Kim_for_Chanel_High_Jewelry_October_2021.jpg/250px-Jennie_Kim_for_Chanel_High_Jewelry_October_2021.jpg" },
-        { name: "강동원", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Gang_Dong-won_in_2022.jpg/250px-Gang_Dong-won_in_2022.jpg" }
+        { name: "제니", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Jennie_Kim_for_Chanel_High_Jewelry_October_2021.jpg" },
+        { name: "강동원", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gang_Dong-won_in_2022.jpg" }
     ],
     "토끼": [
-        { name: "나연", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Im_Na-yeon_at_Music_Bank_on_June_24%2C_2022.jpg/250px-Im_Na-yeon_at_Music_Bank_on_June_24%2C_2022.jpg" },
-        { name: "수지", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bae_Suzy_at_the_Blue_Dragon_Series_Awards_on_July_19%2C_2023.jpg/250px-Bae_Suzy_at_the_Blue_Dragon_Series_Awards_on_July_19%2C_2023.jpg" }
+        { name: "나연", img: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Im_Na-yeon_at_Music_Bank_on_June_24%2C_2022.jpg" },
+        { name: "수지", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Bae_Suzy_at_the_Blue_Dragon_Series_Awards_on_July_19%2C_2023.jpg" }
     ],
     "공룡": [
-        { name: "공유", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Gong_Yoo_at_a_fansign_for_Epigram%2C_31_May_2019.jpg/250px-Gong_Yoo_at_a_fansign_for_Epigram%2C_31_May_2019.jpg" },
-        { name: "김우빈", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Kim_Woo-bin_at_The_Technicians_press_conference%2C_November_2014.jpg/250px-Kim_Woo-bin_at_The_Technicians_press_conference%2C_November_2014.jpg" }
+        { name: "공유", img: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Gong_Yoo_at_a_fansign_for_Epigram%2C_31_May_2019.jpg" },
+        { name: "김우빈", img: "https://upload.wikimedia.org/wikipedia/commons/1/13/Kim_Woo-bin_at_The_Technicians_press_conference%2C_November_2014.jpg" }
     ]
 };
 
