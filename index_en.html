@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Animal Face Test - What animal do I look like?</title>
+  <meta name="description" content="Find out which animal you look like with AI. Puppy face, cat face, rabbit face, and more analyzed by artificial intelligence.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
@@ -26,40 +27,54 @@
   </script>
 </head>
 <body>
-  <div class="controls-container">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="icon">🌓</span>
-      <span class="text">Theme</span>
-    </button>
-    <a href="/index.html" class="lang-link" style="text-decoration: none; color: inherit; background: var(--card-bg); border: 1px solid var(--card-border); padding: 10px 15px; border-radius: 20px; font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: var(--card-shadow); backdrop-filter: blur(10px);">
-      <span class="icon">🇰🇷</span>
-      <span class="text">한국어</span>
-    </a>
-  </div>
+  <header class="site-header">
+    <div class="header-content">
+      <a href="/index_en.html" class="logo">🐾 AI Animal Test</a>
+      <nav class="main-nav">
+        <a href="/index_en.html">Test</a>
+        <a href="/about.html">About</a>
+        <a href="/index.html">🇰🇷 한국어</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="icon">🌓</span>
+        </button>
+      </nav>
+    </div>
+  </header>
   
   <main>
     <section class="test-container">
       <h1 class="title">AI Animal Face Test</h1>
-      <h2 class="subtitle">Find out which animal you look like with AI</h2>
+      <h2 class="subtitle">What animal is your face similar to?</h2>
       
       <div id="upload-container" class="upload-area">
         <input type="file" id="image-upload" accept="image/*" style="display: none;">
         <label for="image-upload" class="upload-label">
           <div class="upload-icon">📸</div>
-          <p>Upload or take a photo</p>
+          <p>Upload a photo to start</p>
+          <span class="upload-hint">(Uploaded photos are not stored)</span>
         </label>
       </div>
 
       <div id="loading" class="loading-spinner" style="display: none;">
         <div class="spinner"></div>
-        <p>AI is analyzing...</p>
+        <p>AI is analyzing your face...</p>
       </div>
 
       <div id="result-container" style="display: none;">
-        <img id="face-image" src="#" alt="your face" class="preview-image">
+        <div class="image-wrapper">
+          <img id="face-image" src="#" alt="your face" class="preview-image">
+        </div>
         <div id="result-message" class="result-message"></div>
         <div id="label-container" class="label-container"></div>
-        <button onclick="window.location.reload()" class="retry-btn">Try Again</button>
+        <button onclick="window.location.reload()" class="retry-btn">Try Another Photo</button>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h3>What is the Animal Face Test?</h3>
+      <div class="article-content">
+        <p>This test uses Google's <strong>Teachable Machine</strong>, an open-source AI, to analyze your facial features. Our AI has been trained on tens of thousands of images to identify common "animal face types" in humans.</p>
+        <p>It's a fun way to discover your hidden charms and share the results with your friends. Facial analysis (physiognomy) has long been used to understand personality traits, and this AI brings a modern twist to that tradition.</p>
       </div>
     </section>
     
@@ -79,24 +94,16 @@
           })();
       </script>
     </section>
-
-    <section class="contact-section">
-      <h3>🤝 Partnership Inquiry</h3>
-      <p>Please leave your business proposals or inquiries.</p>
-      <form action="https://formspree.io/f/maqakqnq" method="POST" class="contact-form">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Name/Company" required>
-        </div>
-        <div class="form-group">
-          <input type="email" name="_replyto" placeholder="Email Address" required>
-        </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Message" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/about.html">About Us</a>
+      <a href="https://formspree.io/f/maqakqnq">Contact</a>
+    </div>
+    <p>&copy; 2026 AI Animal Test. All rights reserved.</p>
+  </footer>
 
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
