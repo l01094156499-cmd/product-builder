@@ -233,14 +233,34 @@ main {
 .upload-hint { font-size: 0.85rem; color: var(--subtitle-color); }
 
 /* Prediction Result */
-.image-wrapper { display: flex; justify-content: center; margin-bottom: 2rem; }
+.image-wrapper { display: flex; justify-content: center; margin-bottom: 2rem; gap: 10px; }
 .preview-image {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   border: 4px solid white;
+}
+
+/* AI Illustration Effect */
+.illustrated-image {
+  filter: sepia(0.2) contrast(1.1) brightness(1.1) saturate(0.8);
+  border: 4px solid #4f46e5 !important;
+  position: relative;
+}
+
+.illustrated-image::after {
+  content: 'AI SKETCH';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #4f46e5;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .main-result { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.8rem; color: #4f46e5; }

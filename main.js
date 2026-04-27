@@ -3,26 +3,6 @@ const URL = "https://teachablemachine.withgoogle.com/models/reY-Rmx3X/";
 
 let model, maxPredictions;
 
-// 연예인 데이터 (나노바나나 서버 주소 적용으로 이미지 깨짐 방지)
-const celebrityData = {
-    "강아지": [
-        { name: "박보영", img: "https://nanobanana.com/images/dog_female.png" },
-        { name: "송중기", img: "https://nanobanana.com/images/dog_male.png" }
-    ],
-    "고양이": [
-        { name: "제니", img: "https://nanobanana.com/images/cat_female.png" },
-        { name: "강동원", img: "https://nanobanana.com/images/cat_male.png" }
-    ],
-    "토끼": [
-        { name: "나연", img: "https://nanobanana.com/images/rabbit_female.png" },
-        { name: "정국", img: "https://nanobanana.com/images/rabbit_male.png" }
-    ],
-    "공룡": [
-        { name: "김민희", img: "https://nanobanana.com/images/dino_female.png" },
-        { name: "김우빈", img: "https://nanobanana.com/images/dino_male.png" }
-    ]
-};
-
 // Load the model
 async function init() {
     const modelURL = URL + "model.json";
@@ -78,52 +58,32 @@ async function predict() {
     const topResult = prediction[0].className;
     let message = "";
     let subMessage = "";
-    let celebs = [];
     
     // 모델의 클래스 이름에 따른 결과 메시지 설정
     if (topResult === "강아지" || topResult.toLowerCase() === "dog") {
         message = "친근한 매력! 강아지상 🐶";
         subMessage = "다정다감하고 귀여운 당신은 어디서나 사랑받는 스타일이군요!";
-        celebs = celebrityData["강아지"];
     } else if (topResult === "고양이" || topResult.toLowerCase() === "cat") {
         message = "시크한 매력! 고양이상 🐱";
         subMessage = "도도하고 신비로운 분위기를 가진 당신은 알수록 빠져드는 매력쟁이!";
-        celebs = celebrityData["고양이"];
     } else if (topResult === "토끼" || topResult.toLowerCase() === "rabbit") {
         message = "귀여운 매력! 토끼상 🐰";
         subMessage = "상큼발랄하고 보호본능을 자극하는 당신은 주변에 에너지를 주네요!";
-        celebs = celebrityData["토끼"];
     } else if (topResult === "공룡" || topResult.toLowerCase() === "dinosaur") {
         message = "강렬한 매력! 공룡상 🦖";
         subMessage = "시크하면서도 듬직한 매력을 가진 당신은 리더십이 느껴지는 관상이군요!";
-        celebs = celebrityData["공룡"];
     } else {
         message = `${topResult}상 입니다!`;
         subMessage = "당신만의 독특한 분위기가 인상적이네요!";
     }
     
-    // 연예인 갤러리 HTML 생성
-    let celebHtml = "";
-    if (celebs && celebs.length > 0) {
-        celebHtml = `
-            <div class="celebrity-examples">
-                <p><strong>내 결과와 닮은꼴 연예인:</strong></p>
-                <div class="celebrity-grid">
-                    ${celebs.map(c => `
-                        <div class="celebrity-item">
-                            <img src="${c.img}" alt="${c.name}" class="celebrity-img">
-                            <span class="celebrity-name">${c.name}</span>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
+    // 사용자의 사진을 '그림화'하는 효과 적용
+    faceImage.classList.add('illustrated-image');
 
     resultMessage.innerHTML = `
         <div class="main-result">${message}</div>
         <div class="sub-result">${subMessage}</div>
-        ${celebHtml}
+        <div class="ai-draw-notice">✨ AI가 당신의 관상을 분석하여 예술적 화풍으로 재해석했습니다.</div>
     `;
 
     // Show All Predictions with progress bars
