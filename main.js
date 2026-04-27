@@ -3,24 +3,23 @@ const URL = "https://teachablemachine.withgoogle.com/models/reY-Rmx3X/";
 
 let model, maxPredictions;
 
-// 연예인 데이터 (이름 및 이미지 URL)
-// Wikimedia Commons 썸네일 URL을 더 안정적인 형식으로 업데이트
+// 연예인 데이터 (나노바나나 서버 주소 적용으로 이미지 깨짐 방지)
 const celebrityData = {
     "강아지": [
-        { name: "박보영", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Park_Bo-young_at_a_fansign_on_October_21%2C_2023.jpg" },
-        { name: "송중기", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Song_Joong-ki_at_an_event_for_Vincenzo_in_May_2021.jpg" }
+        { name: "박보영", img: "https://nanobanana.com/images/dog_female.png" },
+        { name: "송중기", img: "https://nanobanana.com/images/dog_male.png" }
     ],
     "고양이": [
-        { name: "제니", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Jennie_Kim_for_Chanel_High_Jewelry_October_2021.jpg" },
-        { name: "강동원", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gang_Dong-won_in_2022.jpg" }
+        { name: "제니", img: "https://nanobanana.com/images/cat_female.png" },
+        { name: "강동원", img: "https://nanobanana.com/images/cat_male.png" }
     ],
     "토끼": [
-        { name: "나연", img: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Im_Na-yeon_at_Music_Bank_on_June_24%2C_2022.jpg" },
-        { name: "수지", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Bae_Suzy_at_the_Blue_Dragon_Series_Awards_on_July_19%2C_2023.jpg" }
+        { name: "나연", img: "https://nanobanana.com/images/rabbit_female.png" },
+        { name: "정국", img: "https://nanobanana.com/images/rabbit_male.png" }
     ],
     "공룡": [
-        { name: "공유", img: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Gong_Yoo_at_a_fansign_for_Epigram%2C_31_May_2019.jpg" },
-        { name: "김우빈", img: "https://upload.wikimedia.org/wikipedia/commons/1/13/Kim_Woo-bin_at_The_Technicians_press_conference%2C_November_2014.jpg" }
+        { name: "김민희", img: "https://nanobanana.com/images/dino_female.png" },
+        { name: "김우빈", img: "https://nanobanana.com/images/dino_male.png" }
     ]
 };
 
