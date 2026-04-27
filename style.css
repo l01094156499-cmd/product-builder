@@ -325,4 +325,22 @@ body.dark-mode .animal-item { background: rgba(255,255,255,0.02); }
   margin: 0 auto 1rem;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+.celebrity-list {
+  font-size: 0.85rem;
+  color: #4f46e5;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.celebrity-examples {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(79, 70, 229, 0.05);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+body.dark-mode .celebrity-examples {
+  background: rgba(255, 255, 255, 0.05);
+}

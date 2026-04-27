@@ -58,14 +58,25 @@ async function predict() {
     const topResult = prediction[0].className;
     let message = "";
     let subMessage = "";
+    let celebrities = "";
     
     // 모델의 클래스 이름에 따른 결과 메시지 설정
     if (topResult === "강아지" || topResult.toLowerCase() === "dog") {
         message = "친근한 매력! 강아지상 🐶";
         subMessage = "다정다감하고 귀여운 당신은 어디서나 사랑받는 스타일이군요!";
+        celebrities = "박보영, 송중기, 아이유, 정국";
     } else if (topResult === "고양이" || topResult.toLowerCase() === "cat") {
         message = "시크한 매력! 고양이상 🐱";
         subMessage = "도도하고 신비로운 분위기를 가진 당신은 알수록 빠져드는 매력쟁이!";
+        celebrities = "제니, 강동원, 한소희, 이준기";
+    } else if (topResult === "토끼" || topResult.toLowerCase() === "rabbit") {
+        message = "귀여운 매력! 토끼상 🐰";
+        subMessage = "상큼발랄하고 보호본능을 자극하는 당신은 주변에 에너지를 주네요!";
+        celebrities = "나연, 수지, 정국, 임시완";
+    } else if (topResult === "공룡" || topResult.toLowerCase() === "dinosaur") {
+        message = "강렬한 매력! 공룡상 🦖";
+        subMessage = "시크하면서도 듬직한 매력을 가진 당신은 리더십이 느껴지는 관상이군요!";
+        celebrities = "공유, 김우빈, 류준열, 김민희";
     } else {
         message = `${topResult}상 입니다!`;
         subMessage = "당신만의 독특한 분위기가 인상적이네요!";
@@ -74,6 +85,7 @@ async function predict() {
     resultMessage.innerHTML = `
         <div class="main-result">${message}</div>
         <div class="sub-result">${subMessage}</div>
+        ${celebrities ? `<div class="celebrity-examples"><strong>닮은꼴 연예인:</strong> ${celebrities}</div>` : ""}
     `;
 
     // Show All Predictions with progress bars
